@@ -11,11 +11,13 @@ function adicionarAmigo() {
     }
 
     // Validar a entrada para garantir que contenha apenas letras, espaços e até dois dígitos
-    let regex = /^[A-Za-zÁ-ú\s]*\d{0,2}[A-Za-zÁ-ú\s]*$/;
-    if (!regex.test(nomeAmigo)) {
-        alert("Por favor, insira um nome válido (somente letras, espaços e números de até dois dígitos).");
-        return;
-    }
+let regex = /^(?=.*[A-Za-zÁ-ú])[A-Za-zÁ-ú\s]*(\d{1,2}\s*)?[A-Za-zÁ-ú\s]*$/;
+if (!regex.test(nomeAmigo)) {
+    alert("Por favor, insira um nome válido (somente letras, espaços e números de até dois dígitos).");
+    return;
+}
+
+
 
     // Atualizar o array de amigos
     amigos.push(nomeAmigo);
