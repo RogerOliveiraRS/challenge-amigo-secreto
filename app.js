@@ -43,7 +43,7 @@ function atualizarListaDeAmigos() {
         //  Esse elemento <li> é criado no código com document.createElement("li")
         let li = document.createElement("li");//O que estiver no elemento de lista a ser criado estará na variável li
         li.textContent = amigo;
-       /*Quando o código li.textContent = amigo; é executado, ele faz o seguinte:
+    /*Quando o código li.textContent = amigo; é executado, ele faz o seguinte:
 Acessa a variável li: A variável li representa o elemento HTML <li> recém-criado.
 Define o textContent de li: A propriedade textContent do elemento <li> é definida para o valor da variável amigo.
 Exibe o Nome do Amigo: O nome do amigo (contido na variável amigo) é exibido dentro do elemento <li> na página HTML.*/
@@ -80,4 +80,37 @@ Resultado Final
 O resultado final é que, para cada amigo no array amigos, um novo item de lista (<li>) é criado, seu conteúdo de texto é definido como o nome do amigo, e ele é adicionado à lista exibida na página HTML.
 
 Espero que essa explicação tenha sido clara e fácil de entender! Se tiver mais perguntas ou precisar de mais detalhes, estou aqui para ajudar! 😊*/
+
+function sortearAmigo() {
+    // Verificar o tamanho da lista de amigos
+    if (amigos.length === 0) {
+        alert("Por favor, cadastre pelo menos 2 amigos para realizar o sorteio.");
+        return;
+    } else if (amigos.length === 1) {
+        alert("É preciso haver no mínimo 2 amigos cadastrados para o sorteio acontecer.");
+        return;
+    }
+
+    // Gerar um número inteiro aleatório entre 0 e a quantidade de amigos cadastrados
+    let indiceSorteado = Math.floor(Math.random() * amigos.length);
+
+    // Pegar o amigo sorteado
+    let amigoSorteado = amigos[indiceSorteado];
+
+    // Exibir o resultado no elemento com id "resultado"
+    document.getElementById("resultado").innerHTML = "Amigo sorteado: " + amigoSorteado;
+}
+
+/*function novoSorteio() {
+    // Limpar a lista de amigos e a área de resultado
+    amigos = [];
+    document.getElementById("listaAmigos").innerHTML = "";
+    document.getElementById("resultado").innerHTML = "";
+
+    // Resetar o botão para "Sortear amigo"
+    let botaoSortear = document.getElementById("button-draw");
+    botaoSortear.innerHTML = '<img src="assets/play_circle_outline.png" alt="Ícone para sortear">Sortear amigo';
+    botaoSortear.setAttribute("onclick", "sortearAmigo()");
+}*/
+
 
