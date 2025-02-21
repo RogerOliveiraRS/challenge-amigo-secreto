@@ -1,4 +1,5 @@
 let amigos = [];
+let jaSorteados = [];
 
 function adicionarAmigo() {
     // Capturar o valor do campo de entrada
@@ -7,6 +8,11 @@ function adicionarAmigo() {
     // Validar a entrada para garantir que não esteja vazia
     if (nomeAmigo === "") {
         alert("Por favor, insira um nome.");
+        return;
+    }
+
+    if (amigos.includes(nomeAmigo)) {
+        alert("Este nome já existe na lista.");
         return;
     }
 
@@ -81,7 +87,7 @@ O resultado final é que, para cada amigo no array amigos, um novo item de lista
 
 Espero que essa explicação tenha sido clara e fácil de entender! Se tiver mais perguntas ou precisar de mais detalhes, estou aqui para ajudar! 😊*/
 
-function sortearAmigo() {
+/*function sortearAmigo() {
     // Verificar o tamanho da lista de amigos
     if (amigos.length === 0) {
         alert("Por favor, cadastre pelo menos 2 amigos para realizar o sorteio.");
@@ -99,9 +105,10 @@ function sortearAmigo() {
 
     // Exibir o resultado no elemento com id "resultado"
     document.getElementById("resultado").innerHTML = "Amigo sorteado: " + amigoSorteado;
+    
 }
 
-/*function novoSorteio() {
+function novoSorteio() {
     // Limpar a lista de amigos e a área de resultado
     amigos = [];
     document.getElementById("listaAmigos").innerHTML = "";
@@ -112,5 +119,40 @@ function sortearAmigo() {
     botaoSortear.innerHTML = '<img src="assets/play_circle_outline.png" alt="Ícone para sortear">Sortear amigo';
     botaoSortear.setAttribute("onclick", "sortearAmigo()");
 }*/
+function sortearAmigo() {
+    // Verificar o tamanho da lista de amigos
+    if (amigos.length < 2) {
+        alert("É preciso haver no mínimo 2 amigos cadastrados para o sorteio acontecer.");
+        return;
+    }
+
+    // Gerar um número inteiro aleatório entre 0 e a quantidade de amigos cadastrados
+    let indiceSorteado = Math.floor(Math.random() * amigos.length);
+
+    // Pegar o amigo sorteado
+    let amigoSorteado = amigos[indiceSorteado];
+
+    // Exibir o resultado no elemento com id "resultado"
+    document.getElementById("resultado").innerHTML = "Amigo sorteado: " + amigoSorteado;
+
+    // Mudar o texto do botão para "Novo Sorteio!"
+    let botaoSortear = document.getElementById("button-draw");
+    botaoSortear.textContent = "Novo Sorteio!";
+    botaoSortear.setAttribute("onclick", "novoSorteio()");
+}
+
+function novoSorteio() {
+    // Limpar a lista de amigos e a área de resultado
+    amigos = [];
+    document.getElementById("listaAmigos").innerHTML = "";
+    document.getElementById("resultado").innerHTML = "";
+
+    // Resetar o botão para "Sortear amigo" com a imagem
+    let botaoSortear = document.getElementById("button-draw");
+    botaoSortear.innerHTML = '<img src="assets/play_circle_outline.png" alt=""> Sortear amigo';
+    botaoSortear.setAttribute("onclick", "sortearAmigo()");
+}
+
+
 
 
