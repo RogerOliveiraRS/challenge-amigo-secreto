@@ -5,7 +5,7 @@ function adicionarAmigo() {
     // Capturar o valor do campo de entrada
     let nomeAmigo = document.querySelector(".input-name").value.trim();
 
-    // Validar a entrada para garantir que não esteja vazia
+    // Validar  entrada para garantir que não esteja vazia
     if (nomeAmigo === "") {
         alert("Por favor, insira um nome.");
         return;
